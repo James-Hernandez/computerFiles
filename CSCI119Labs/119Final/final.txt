@@ -1,0 +1,232 @@
+[MA] Consider the following context-free grammar G, with start symbol S:
+ S -> AB | BSA 
+ A -> aA | a
+ B -> bB | b
+Which of the following strings are in the L(G)?
+*1. bbbaabaaaaaa
+2. ababaaabaa
+*3. bbbaaaabbaa
+*4. bbbaabbbaaa
+
+[FB] You are given a Regular Expression RE, Complete the description of
+RE below.
+    RE = "(b+a)*ba(a+b)*ba"
+The regular expression RE produces all strings containing at least ____
+sequence of characters.
+*baba
+
+[MC] Given the CFG G1, with rules: S -> TbTb
+                                   T -> aT | bTb | ε
+generates the set of all strings in Σ∗ with an _
+1. an equal number of a's and b's
+2. an odd number of b's and ends in b
+*3. an even number of b's and ends in b
+4. an odd number of b's and ends in a
+
+[MA] In a Finite State Machine where M = (Q,s,F,δ) what must be true for
+F to be valid.
+1. There are the same number of states in F as there are in Q 
+2. F must have an elment of s
+*3. F must signify a valid ending point for a given expression. 
+*4. F must be a subset of Q
+
+[MC] Construct an FSM Machine where it excepts only strings that do not
+contain the sequence "aab" as a substring.
+What is the correct set of Final states?
+1. [1,2]
+2. [0,2,3]
+*3. [0,1,2]
+4. [3]
+
+[MA] Which of the following Regular Expressions represent the language
+all strings containing at least one 'b'?
+*1. a*b(a+b)*
+2. b*(a+b)*a
+*3. (a+b)*b(b+a)*
+*4. (b+a)*ba*
+
+[MC] Using Brzozowski construction with left quotient on the Regular
+Expression (b+ba*b)* compute the derivative with respect to 'a' so,
+starting with a\(b+ba*b)*
+1. a*b(b+ba*b)*
+2. (b+ab*a)*
+*3. (b+ba*b)*
+4. (1 + a*b)(b+ba*b)*
+
+[FB] This analogous operation, similar to division such as taking 
+lol "b" and L = ["abc","def","gab","agb"] and returning ["ga","ag"].
+This analogous function is refered to as the ____ (type lower case)
+*right quotient
+
+[FB] You are given a grammar G, which produces strings in the form
+that follows L = {b^ic^ja^i+j | i,j <- N} with Σ = {a,b,c}. Below is
+an incomplete TERMINAL NORMAL FORM for this grammar, fill in the
+S transitions that follow TERMINAL NORMAL FORM.(NO SPACES IN RESPONSE)
+   S -> ____
+   Y ->cYa|ca
+*bSa|ba|cYa|ca
+
+[MC] The minimal machine that accepts the language b(ab)* has how many states?
+1. 4
+2. 2
+3. 5
+*4. 3
+
+[MC] You are given two different FSM's, FSM m1 and FSM m2:
+    m1: accepts all strings with exactly even number of b's
+    m2: accepts all strings that end in ba
+After getting the Union of these two machines m1 Union m2 , what are all 
+of the final state pairs?
+1. [(0,0),(2,0),(2,2)]
+*2. [(0,0),(0,1),(0,2),(1,2)]
+3. [(0,1),(0,2),(1,2)]
+4. [(0,0),(1,2),(2,0),(2,2)]
+
+[FB] State what the computation will give
+(bab*bab*)/(ba*)
+____
+*bab*ab*
+
+[MA] You are given the regular expression r = a(ab)*a, which of the following
+regular expressions also accept the same language as r of containg at least
+two a's  
+1. r1 = a*(b+a)*b(a+b)*a
+*2. r2 = b*a(b+a)*a
+*3. r3 = (ab)*a(a+b)b*a
+4. r4 = (b+a)ab(b+a)*a
+
+[MA] You have a table that shows the equivalience relations when constructing
+FSM minimization on a given machine, which of the following can be said about
+the table.
+      1    2    3    4
+   1 |_%_|__+_|_+__|_+__|    + represent uppper half
+   2 |_-_|__%_|_+__|_+__|    - represent lower half
+   3 |_-_|__-_|__%_|__+_|    % represent diagonal of table
+   4 |_-_|__-_|__-_|__%_|
+*1. the upper half of the table shows the "correct" equivalience relations 
+*2. every pair in the diagonal,%, are equivalent 
+3. Relation(2,1) not equivalent => Relation(1,2) is equivalent
+*4. finding the equivalience relations you only need to consider the upper half
+
+[FB] You are given the following grammar G, which is shown below.
+    S -> BCXAY
+    S -> BF
+    F -> CG
+    G -> XT
+    T -> AY
+The grammar G is in the form of ____ (use all lower case)
+*chomsky normal form
+*chomsky
+*cnf
+
+[MA] Below are a list of regular expressions, choose wich ones are 
+considered to be bypassable
+*1. a*(ab)*(a+b)*
+2. b*(a+b)*b(ab)*
+*3. b*a*(b+a)*(ba)*
+*4. (ab)*(ba)*(a+b)*(b+a)*
+
+[MC] Based on the Theorm for concatenation, you are given the string "abcdef"
+how many ways could the string be split?
+1. 5
+*2. 7
+3. 6
+4. 8
+
+[MA] Based on the Theorms of Regular Languages, what of the following are
+a true statement? (L1 & L2 are languages)
+*1. The language {bε}* is a regular language
+2. If a language is infinite then conclusively it is a regular language 
+3. Union of L1 and L2 results in a regular language if neither L1 or L2 are regular
+*4. If a language is finite then conclusivley it is a regular language
+
+[MC] Using Arden's Lemma, you are given two Regular Expression Equations,
+use them to solve for Y. (no spaces in answer)
+    Y = bX + aY + 1
+    X =      aX + bY
+ Y = ____
+1. (b*ab+a)*
+2. (ba*b+a)
+*3. (ba*b+a)*
+4. (ab*a+b)*
+
+[FB] This repeated inductive process, when applying an operation to all the
+elements in a closed set get you back into the same closed set is known as
+the ____ process (use lower case).
+*closure
+
+[FB] You are given a regular expression r, what needs to be added to make
+it bypassable?
+r = (ab)*b*a____
+**
+
+[MC] You are given the FSM machine m1,
+ m1: accepts all strings with exactly even number of b's
+   ___           ___
+  | a |         | a |   What happens with the FSM if you were to start in 
+  \  </         \  </   state 1 so , L1(m1) = ?
+  +===+----b--->+---+
+ >| 0 |         | 1 |
+  +===+<---b----+---+
+1. nothing happens, accepts the same language
+2. you cant start in state any other state except 0
+*3. accepts odd number of b's vs even number of b's
+4. accepts both even and odd number of b's
+
+[MC] You are given two Language Equations, selcet the correct equivalent
+regular expression equations.
+        X = {a}Y U {b}X U {ε}
+        Y = {a}X U {b}Y
+1. X = aX + bY + 0 | Y = bY + aY
+*2. X = aY + bX + 1 | Y = aX + bY 
+3. X = bY + aY + 1 | Y = aX + bY
+4. X = Ya + Xb + 1 | Y = Yb + Xa
+
+[MA] You are given the language {a^ib^i | i <- N, i >= 1} which of the
+following strings are considered to be in the language.
+1. bbbaaaa
+*2. aaaabbbb
+3. aaaabbbbb
+*4. ab
+
+[MA] Which of the following Languages could produce the string "abbc"?
+*1. {a^ib^jc^k | i <- N, j <- N, k <- N}
+*2. {a^ib^jc^i | i <- N, j <- N}
+3. {a^ib^ic^i | i <- N}
+4. {a^ib^ic^j | i <- N, j <- N}
+ 
+[MA] Using Brzozowski construction, which of the following are true?
+1. a\1 = 1
+*2. b\b = 1
+*3. b\a = 0
+4. a\r1+r2 = (a\r2)+a\r1
+
+[FB] You are given the following grammar G, which is shown below.
+    S -> aSc|ac|bTc|bc
+    T -> bTc|bc
+The grammar G is in the form of ____ (use all lower case)
+*terminal normal form
+*tnf
+*TNF
+
+[MC] You are presented a CFG, which string is possible from the grammar?
+    S -> Bb|aAS
+    B -> b|S
+    A -> a|S
+1. ababab
+2. bbabaa
+*3. aaabbbbbbaabbbbb
+4. bbbaaabbbabababab
+
+[MA] Using the Kleene Star theorem, and a sigma containing {a,b} what set
+of strings are in the language?
+*1. {ε,a,b}
+2. {a,b,abb,aaab}
+3. {abb,baa}
+*4  {ε,aaa,bbb}
+
+[FB] Any Kleene Star set must accept the ____ case for it to be true, another
+way of thinking of this problem is what is always in included in a
+Kleene Star set?
+*empty
+*Empty

@@ -1,0 +1,58 @@
+checkFSM :: FSM -> Bool
+checkFSM (qs, s, fs, d) = nodups qs && s `elem` qs && all (`elem` qs) fs && func
+  where nodups [] = True
+        nodups (q:qs) = q `notElem` qs && nodups qs
+        func = and [d q a `elem` qs | q <- qs, a <- sigma]
+
+-- Gives the delta* function (recursive in w)
+dstar :: FSM -> Int -> [Char] -> Int
+dstar (_, _, _, d) = foldl d
+
+-- Machine acceptance, Definition 1 (via delta*)
+accept1 :: FSM -> [Char] -> Bool
+accept1 m@(qs, s, fs, d) w = dstar m s w `elem` fs
+
+-- Machine acceptance, Definition 2 (via L_q(M))
+accept2 :: FSM -> [Char] -> Bool
+accept2 (qs, s, fs, d) w = aux s w where
+  -- aux q w = whether m, starting in q, accepts w (recursive in w)
+  aux :: Int -> [Char] -> Bool
+  aux q [] = q `elem` fs
+  aux q (x:xs) = aux (d q x) xs
+
+-- Define a machine that accepts exactly the strings with an odd number of 'b's
+-- (Solution given for illustration)
+oddbs :: FSM
+oddbs = ([0,1], 0, [1], d) where
+  d q 'a' = q        -- stay in the same state
+  d q 'b' = 1 - q    -- switch states
+
+-- Define a machine that accepts exactly the strings that do not contain "aab"
+-- as a substring and test it adequately
+avoid_aab :: FSM
+avoid_aab = ([0,1,2,3], 0, [0,1,2], d) where
+  d q 'a' = if q <= 1 then q+1 else q
+  d q 'b' = if q <= 1 then 0 else 3
+  ---- or equivalently and less cleverly
+  -- d 0 'a' = 1;   d 0 'b' = 0
+  -- d 1 'a' = 2;   d 1 'b' = 0
+  -- d 2 'a' = 2;   d 2 'b' = 3
+  -- d 3 _ = 3
+
+-- Define a machine that accepts all strings that end in "ab" and test
+end_ab :: FSM
+end_ab = ([0,1,2], 0, [2], d) where
+  d q 'a' = 1
+  d q 'b' = if q == 1 then 2 else 0
+
+-- Define a function that takes a string and returns a machine that accepts
+-- exactly that string and nothing else (compare to 'onestr' from Lab 3)
+-- Hint: the expression w !! i gives the i-th character of the list/string w
+exactly :: String -> FSM
+exactly w = ([0..n+1], 0, [n], d) where
+  n = length w
+  d i x = if i < n && w !! i == x then i+1 else n+1
+
+avoid_aab_test = and [accept1 avoid_aab w == not (isInfixOf "aab" w) | w <- s10]
+end_ab_test = and [accept1 end_ab w == isSuffixOf "ab" w | w <- s10]
+exactly_abba_test = [w | w <- s10, accept1 (exactly "abba") w] == ["abba"]
